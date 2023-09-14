@@ -1,4 +1,5 @@
-import 'package:fasfin/app/presentation/pages/home/views/home_view.dart';
+import 'package:fasfin/app/presentation/pages/pages.dart';
+import 'package:fasfin/app/presentation/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -8,9 +9,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      home: const SplashView(),
+      routes: appRoutes,
     );
   }
 }
