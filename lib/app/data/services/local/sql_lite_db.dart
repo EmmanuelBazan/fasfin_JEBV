@@ -62,7 +62,7 @@ class SqlLiteDB {
           CREATE TABLE Records(
             id INTEGER PRIMARY KEY,
             categoriaId INT,
-            tipo TEXT,
+            operacionId INT,
             descripcion TEXT,
             total REAL,
             imgs TEXT,
@@ -70,6 +70,7 @@ class SqlLiteDB {
             fecha TIMESTAMP,
             FOREIGN KEY (categoriaId) REFERENCES Categorias (id) ON DELETE SET NULL ON UPDATE NO ACTION,
             FOREIGN KEY (cuentaId) REFERENCES Cuentas (id) ON DELETE SET NULL ON UPDATE NO ACTION,
+            FOREIGN KEY (operacionId) REFERENCES Operaciones (id) ON DELETE SET NULL ON UPDATE NO ACTION,
           )
         ''');
       },

@@ -1,8 +1,8 @@
-import 'package:fasfin/app/domain/models/record.dart';
+import 'package:fasfin/app/domain/models/record_model.dart';
 import 'package:fasfin/app/stateManager/notifier.dart';
 
 abstract class DataBaseRepository extends Notifier {
-  Future<RecordModel> get create;
+  Future<RecordModel?> create(RecordModel record);
   Future<RecordModel> get update;
   Future<bool> get delete;
   Future<RecordModel> get find;

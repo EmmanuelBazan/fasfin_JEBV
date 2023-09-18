@@ -1,10 +1,19 @@
-import 'package:fasfin/app/domain/models/record.dart';
+import 'package:fasfin/app/data/services/local/sql_lite_db.dart';
+import 'package:fasfin/app/domain/models/record_model.dart';
 import 'package:fasfin/app/domain/repositories/data_base_repository.dart';
 
 class DataBaseRepositoryImpl extends DataBaseRepository {
+  final SqlLiteDB database;
+
+  DataBaseRepositoryImpl(this.database);
+
   @override
-  // TODO: implement create
-  Future<RecordModel> get create => throw UnimplementedError();
+  Future<RecordModel?> create(RecordModel record) async {
+    final db = await database.getDB;
+    final res = await db.insert('Records', record.toMap());
+    record.id = res;
+    return record;
+  }
 
   @override
   // TODO: implement delete
