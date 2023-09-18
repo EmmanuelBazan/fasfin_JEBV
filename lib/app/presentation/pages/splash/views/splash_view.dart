@@ -12,8 +12,10 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider<ConnectivityRepository>(
-      create: () =>
-          ConnectivityRepositoryImpl(Connectivity(), InternetChecker()),
+      create: () => ConnectivityRepositoryImpl(
+        Connectivity(),
+        InternetChecker(),
+      ),
       child: const _MyView(),
     );
   }

@@ -30,4 +30,15 @@ class DataBaseRepositoryImpl extends DataBaseRepository {
   @override
   // TODO: implement update
   Future<RecordModel> get update => throw UnimplementedError();
+
+  @override
+  Future<List<RecordModel>> listByOperation(int operation) async {
+    final db = await database.getDB;
+    final res = await db
+        .query('Records', where: 'operacionId = ?', whereArgs: [operation]);
+
+    final dataModel = res.map((e) => RecordModel.fromMap(e)).toList();
+
+    return dataModel;
+  }
 }
