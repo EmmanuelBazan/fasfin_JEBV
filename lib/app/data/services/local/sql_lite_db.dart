@@ -36,14 +36,14 @@ class SqlLiteDB {
             descripcion TEXT,
             total REAL,
             icono TEXT,
-            color TEXT,
+            color TEXT
           )
         ''');
 
         await db.execute('''
           CREATE TABLE Operaciones(
             id INTEGER PRIMARY KEY,
-            descripcion TEXT,
+            descripcion TEXT
           )
         ''');
 
@@ -54,7 +54,7 @@ class SqlLiteDB {
             color TEXT,
             icono TEXT,
             operacionId INT,
-            FOREIGN KEY (operacionId) REFERENCES Operaciones (id) ON DELETE SET NULL ON UPDATE NO ACTION,
+            FOREIGN KEY (operacionId) REFERENCES Operaciones (id) ON DELETE SET NULL ON UPDATE NO ACTION
           )
         ''');
 
@@ -70,8 +70,23 @@ class SqlLiteDB {
             fecha TIMESTAMP,
             FOREIGN KEY (categoriaId) REFERENCES Categorias (id) ON DELETE SET NULL ON UPDATE NO ACTION,
             FOREIGN KEY (cuentaId) REFERENCES Cuentas (id) ON DELETE SET NULL ON UPDATE NO ACTION,
-            FOREIGN KEY (operacionId) REFERENCES Operaciones (id) ON DELETE SET NULL ON UPDATE NO ACTION,
+            FOREIGN KEY (operacionId) REFERENCES Operaciones (id) ON DELETE SET NULL ON UPDATE NO ACTION
           )
+        ''');
+
+        await db.execute('''
+          INSERT INTO Cuentas (nombre,descripcion,total)
+          VALUES( 'Cuenta Fasfin', 'Cuenta inicial de Fasfin', 0)
+        ''');
+
+        await db.execute('''
+          INSERT INTO Operaciones (id,descripcion)
+          VALUES(0,'Gastos')
+        ''');
+
+        await db.execute('''
+          INSERT INTO Operaciones (id,descripcion)
+          VALUES(1,'Ingresos')
         ''');
       },
     );

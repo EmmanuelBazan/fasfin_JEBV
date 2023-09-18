@@ -14,7 +14,7 @@ class HomeController extends Notifier {
   }
 
   Future<void> getAllExpenses() async {
-    final res = await db.listByOperation(1);
+    final res = await db.listByOperation(0);
     _recordList = [...res];
     notify();
   }
